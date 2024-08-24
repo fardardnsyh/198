@@ -1,0 +1,82 @@
+<%- include('partials/header') -%>
+
+    <section class="container">
+        <h2>This is the INVOICE GENERATING page</h2>
+
+        <div class="form-container">
+            <form action="/invoices/newInvoice" method="POST" class="form-style">
+                <h4 class="bill-style">Bill From</h4>
+                <label for="ownStreet" class="lab-style">Street Address</label>
+                <input type="text" name="ownStreet" class="input-full">
+                <div class="short-inputs">
+                    <label for="ownCity" class="lab-style">City</label>
+                    <input type="text" name="ownCity" class="input-short">
+                    <label for="ownPostal" class="lab-style">Post Code</label>
+                    <input type="text" name="ownPostal" class="input-short">
+                    <label for="ownCountry" class="lab-style">Country</label>
+                    <input type="text" name="ownCountry" class="input-short">
+                </div>
+
+                <h4 class="bill-style">Bill To</h4>
+
+                <label for="clientName" class="lab-style">Client's Name</label>
+                <input type="text" name="clientName" class="input-full">
+                <label for="clientEmail" class="lab-style">Client's Email</label>
+                <input type="text" name="clientEmail" class="input-full">
+                <label for="street" class="lab-style">Street Address</label>
+                <input type="text" name="street" class="input-full">
+                
+                <div class="short-inputs">
+                    <label for="city" class="lab-style">City</label>
+                    <input type="text" name="city" class="input-short">
+                    <label for="postal" class="lab-style">Post Code</label>
+                    <input type="text" name="postal" class="input-short">
+                    <label for="country" class="lab-style">Country</label>
+                    <input type="text" name="country" class="input-short">
+                </div>
+
+                <div class="short-inputs">
+                    <!-- <label for="issueDate" class="lab-style">Issue Date</label>
+                    <input type="date" name="issueDate" class="input-short"> -->
+                    <!-- What type of input field is this? -->
+                    <label for="terms" class="lab-style">Payment Terms</label>
+                    <input type="text" name="terms" class="input-short">
+                    <label for="dueDate" class="lab-style">Payment Due</label>
+                    <input type="date" name="dueDate" class="input-short">
+                </div>
+
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- I don't know if the invoices will be READ on the same page as the form -->
+    <section>
+        <ul>
+            <% getInvoices.forEach(item=> { %>
+                <li>
+                    <div>
+                        <%= item.ownStreet %>
+                        <%= item.ownCity %>
+                        <%= item.ownPostal %>
+                        <%= item.ownCountry %>
+                    </div>
+                    <div>
+                        <%= item.clientName %>
+                        <%= item.clientEmail %>
+                        <%= item.street %>
+                        <%= item.city %>
+                        <%= item.country %>
+                        <%= item.postal %>
+                        <%= item.terms %>
+                        <%= item.dueDate %>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </section>
+
+
+
+<%- include('partials/footer') -%>
